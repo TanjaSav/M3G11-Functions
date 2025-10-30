@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES6",               // or 'ES2015' — it's the same thing
+    "lib": ["ES6", "DOM"],         // enables methods like .find()
+    "module": "CommonJS",          // for Node.js
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["main.ts"]
+}
