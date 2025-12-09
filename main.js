@@ -1,56 +1,49 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+"use strict";
 // Create a container for output
-var container = document.createElement("div");
+const container = document.createElement("div");
 container.id = "output";
 document.body.appendChild(container);
 // Helper function to append text to container
 function appendMessage(message) {
-    var output = document.getElementById("output");
+    const output = document.getElementById("output");
     if (output) {
-        var p = document.createElement("p");
+        const p = document.createElement("p");
         p.textContent = message;
         output.appendChild(p);
     }
 }
 // Initial contact list
-var contacts = [
+const contacts = [
     { name: "Alex", email: "alex@gmail.com" },
     { name: "Maria", email: "maria@gmail.com" },
     { name: "John", email: "john@gmail.com" },
 ];
 // New contact to add
-var newContact = {
+const newContact = {
     name: "Alex",
     email: "alex@gmail.com",
 };
 // add(contact)
-var add = function (contact) {
+const add = (contact) => {
     if (!contact.name || !contact.email) {
-        appendMessage("Error: \"Missing fields\"");
+        appendMessage(`Error: "Missing fields"`);
+        console.log(`Error: "Missing fields"`);
     }
-    else if (contacts.some(function (c) { return c.email === contact.email; })) {
-        appendMessage("Error: \"Duplicate was found\"");
+    else if (contacts.some(c => c.email === contact.email)) {
+        appendMessage(`Error: "Duplicate was found"`);
+        console.log(`Error: "Duplicate was found"`);
     }
     else {
         contacts.push(contact);
-        appendMessage("Success: \"Contact ".concat(contact.name, " was added\""));
+        appendMessage(`Success: "Contact ${contact.name} was added"`);
+        console.log(`Success: "Contact ${contact.name} was added"`);
     }
 };
 add(newContact);
 // remove(email)
-var remove = function (email) {
-    var contactToRemove;
-    var found = contacts.some(function (c, i) {
+const remove = (email) => {
+    let contactToRemove;
+    const found = contacts.some((c, i) => {
         if (c.email === email) {
             contactToRemove = i;
             return true;
@@ -58,56 +51,69 @@ var remove = function (email) {
         return false;
     });
     if (!found || contactToRemove === undefined) {
-        appendMessage("Error: \"Contact not found\"");
+        appendMessage(`Error: "Contact not found"`);
+        console.log(`Error: "Contact not found"`);
     }
     else {
-        appendMessage("Success: \"".concat(contacts[contactToRemove].name, " was removed\""));
+        appendMessage(`Success: "${contacts[contactToRemove].name} was removed"`);
+        console.log(`Success: "${contacts[contactToRemove].name} was removed"`);
         contacts.splice(contactToRemove, 1);
     }
 };
 remove("maria@gmail.com");
 // edit(email, newData)
-var editData = contacts.map(function (contact) {
+const editData = contacts.map(contact => {
     if (contact.name === "John" && !contact.email) {
-        appendMessage("Error: \"Contact not found\"");
+        appendMessage(`Error: "Contact not found"`);
+        console.log(`Error: "Contact not found"`);
         return contact;
     }
     else if (contact.name === "John") {
-        appendMessage("Success: \"".concat(contact.name, " was updated\""));
-        return __assign(__assign({}, contact), { email: "john@gmail.is" });
+        appendMessage(`Success: "${contact.name} was updated"`);
+        console.log(`Success: "${contact.name} was updated"`);
+        return Object.assign(Object.assign({}, contact), { email: "john@gmail.is" });
     }
     else {
         return contact;
     }
 });
 // get(email)
-var getContactInfo = function (contact) {
-    var _a, _b;
+const getContactInfo = (contact) => {
+    var _a, _b, _c, _d;
     if (!contact.email) {
-        appendMessage("Error: \"Contact not found\"");
+        appendMessage(`Error: "Contact not found"`);
+        console.log(`Error: "Contact not found"`);
     }
     else {
-        appendMessage("Success: \"Name: ".concat(contact.name, ", Email: ").concat(contact.email, ", Phone number: ").concat((_a = contact.phoneNumber) !== null && _a !== void 0 ? _a : "Not provided", ", Company: ").concat((_b = contact.company) !== null && _b !== void 0 ? _b : "Not provided", "\""));
+        appendMessage(`Success: "Name: ${contact.name}, Email: ${contact.email}, Phone number: ${(_a = contact.phoneNumber) !== null && _a !== void 0 ? _a : "Not provided"}, Company: ${(_b = contact.company) !== null && _b !== void 0 ? _b : "Not provided"}"`);
+        console.log(`Success: "Name: ${contact.name}, Email: ${contact.email}, Phone number: ${(_c = contact.phoneNumber) !== null && _c !== void 0 ? _c : "Not provided"}, Company: ${(_d = contact.company) !== null && _d !== void 0 ? _d : "Not provided"}"`);
     }
 };
 getContactInfo(contacts[1]);
 // listAll()
-var listAll = function (list) {
-    var formatted = list.map(function (c) { return "".concat(c.name, " <").concat(c.email, ">"); }).join(", ");
+const listAll = (list) => {
+    const formatted = list.map(c => `${c.name} <${c.email}>`).join(", ");
     appendMessage(formatted);
+    console.log(formatted);
 };
 listAll(contacts);
+console.log(contacts);
 // clear()
-var doYouWantToClearTheList = confirm("Do you want to clear the list?");
+const doYouWantToClearTheList = confirm("Do you want to clear the list?");
 alert(doYouWantToClearTheList);
-var removeAllContacts = function (list) {
+console.log(doYouWantToClearTheList);
+const removeAllContacts = (list) => {
     if (doYouWantToClearTheList) {
         list.splice(0, list.length);
         appendMessage("The contact list was cleared");
+        console.log("The contact list was cleared");
     }
     else {
         appendMessage("Operation canceled");
+        console.log("Operation canceled");
     }
 };
 removeAllContacts(contacts);
+console.log(contacts);
 listAll(contacts);
+console.log(contacts);
