@@ -10,7 +10,7 @@ This is exercise from Module 3 Guide "Functions".
 - Testing and interpreting browser output
 
 ##  Browser Output
-After launching `index.html` on a local server (`127.0.0.1:5500`), I saw the following messages:
+After launching `index.html` on a local server, I saw the following messages:
 
 -  `Error: "Duplicate was found"`
 -  `Success: "Maria was removed"`
@@ -19,6 +19,7 @@ After launching `index.html` on a local server (`127.0.0.1:5500`), I saw the fol
 -  `Alex <alex@gmail.com>, John <john@gmail.com>`
 -  `The contact list was cleared`
 
-These messages confirm that the functions are working correctly: removing, updating, checking for duplicates, and displaying contact information are all functioning as expected.
+These messages confirm that the functions for removing, updating, checking for duplicates, and displaying contact information are all working as expected.
 
 ## Live Demo:
+https://tanjasav.github.io/M3G11-Functions/
